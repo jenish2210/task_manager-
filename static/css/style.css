@@ -1,0 +1,175 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(
+        135deg,
+        #2b1055,
+        #7597de
+    );
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.container{
+
+    width: 100%;
+    max-width: 500px;
+
+    background: rgba(255,255,255,0.15);
+
+    backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 8px 32px rgba(0,0,0,0.3);
+
+    color: white;
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 32px;
+    color: white;
+}
+
+h3{
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+input{
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 12px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.2);
+
+    color: white;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+input::placeholder{
+    color: rgba(255,255,255,0.7);
+}
+
+button{
+
+    padding: 12px 18px;
+
+    margin-top: 12px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: white;
+
+    color: #5b21b6;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+button:hover{
+
+    background: #e9d5ff;
+
+    transform: scale(1.03);
+}
+
+ul{
+    margin-top: 20px;
+}
+
+li{
+
+    list-style: none;
+
+    background: rgba(255,255,255,0.15);
+
+    padding: 15px;
+
+    margin-top: 12px;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.task-buttons{
+    display: flex;
+    gap: 10px;
+}
+
+@media(max-width:600px){
+
+    .container{
+        padding: 20px;
+    }
+
+    h1{
+        font-size: 26px;
+    }
+
+    button{
+        width: 100%;
+    }
+
+    li{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .task-buttons{
+        width: 100%;
+        flex-direction: column;
+    }
+}
