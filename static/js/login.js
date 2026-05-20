@@ -7,7 +7,7 @@ async function login() {
         document.getElementById("password").value;
 
     const response = await fetch(
-        "http://127.0.0.1:8000/api/login/",
+        "/api/login/",
         {
             method: "POST",
 

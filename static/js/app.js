@@ -1,8 +1,8 @@
-let currentPage = 1;
+
 const token = localStorage.getItem("token");
 
 if (!token) {
-    window.location.href = "login.html";
+    window.location.href = "/login/";
 }
 
 async function getTasks(page = 1) {
@@ -10,7 +10,7 @@ async function getTasks(page = 1) {
     currentPage = page;
 
     const response = await fetch(
-        `http://127.0.0.1:8000/api/tasks/?page=${page}`,
+        `/api/tasks/?page=${page}`,
         {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -61,7 +61,7 @@ async function createTask() {
         document.getElementById("taskInput").value;
 
     await fetch(
-        "http://127.0.0.1:8000/api/tasks/",
+        "/api/tasks/",
         {
             method: "POST",
 
@@ -76,13 +76,15 @@ async function createTask() {
         }
     );
 
-    getTasks();
+    document.getElementById("taskInput").value = "";
+
+    getTasks(currentPage);
 }
 
 async function completeTask(id) {
 
     await fetch(
-        `http://127.0.0.1:8000/api/tasks/${id}/`,
+        `/api/tasks/${id}/`,
         {
             method: "PUT",
 
@@ -97,13 +99,13 @@ async function completeTask(id) {
         }
     );
 
-    getTasks();
+    getTasks(currentPage);
 }
 
 async function deleteTask(id) {
 
     await fetch(
-        `http://127.0.0.1:8000/api/tasks/${id}/`,
+        `/api/tasks/${id}/`,
         {
             method: "DELETE",
 
@@ -113,22 +115,20 @@ async function deleteTask(id) {
         }
     );
 
-    getTasks();
+    getTasks(currentPage);
 }
 
 function logout() {
 
     localStorage.removeItem("token");
 
-    window.location.href = "login.html";
+    window.location.href = "/login/";
 }
-
-getTasks();
 
 async function filterTasks(status) {
 
     const response = await fetch(
-        `http://127.0.0.1:8000/api/tasks/?completed=${status}`,
+        `/api/tasks/?completed=${status}`,
         {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -147,24 +147,24 @@ async function filterTasks(status) {
         html += `
         <li>
 
-    <span>
-        ${task.completed ? "✅" : "❌"}
-        ${task.title}
-    </span>
+            <span>
+                ${task.completed ? "✅" : "❌"}
+                ${task.title}
+            </span>
 
-    <div class="task-buttons">
+            <div class="task-buttons">
 
-        <button onclick="completeTask(${task.id})">
-            Complete
-        </button>
+                <button onclick="completeTask(${task.id})">
+                    Complete
+                </button>
 
-        <button onclick="deleteTask(${task.id})">
-            Delete
-        </button>
+                <button onclick="deleteTask(${task.id})">
+                    Delete
+                </button>
 
-    </div>
+            </div>
 
-</li>
+        </li>
         `;
     });
 
@@ -173,19 +173,3 @@ async function filterTasks(status) {
     ).innerHTML = html;
 }
 
-function nextPage(){
-
-    currentPage++;
-
-    getTasks(currentPage);
-}
-
-function previousPage(){
-
-    if(currentPage > 1){
-
-        currentPage--;
-
-        getTasks(currentPage);
-    }
-}
