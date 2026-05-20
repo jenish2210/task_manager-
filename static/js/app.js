@@ -1,4 +1,4 @@
-
+let currentPage = 1;
 const token = localStorage.getItem("token");
 
 if (!token) {
