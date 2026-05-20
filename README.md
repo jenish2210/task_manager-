@@ -10,7 +10,7 @@ It includes secure authentication, task management APIs, and a luxury glassmorph
 # 🚀 Live Demo
 
 🔗 Deployment Link:  
-[Add Your Render Link Here](https://task-manager-k9l0.onrender.com)
+[live link here](https://task-manager-k9l0.onrender.com)
 
 ---
 
@@ -137,7 +137,7 @@ The frontend features a modern:
 ## 1️⃣ Clone Repository
 
 ```bash
-git clone [YOUR_GITHUB_REPOSITORY_LINK](https://github.com/jenish2210/task_manager-)
+git clone https://github.com/jenish2210/task_manager-
 ```
 
 ---
