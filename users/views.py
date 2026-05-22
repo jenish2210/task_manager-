@@ -11,28 +11,28 @@ def register(request):
     username = request.data.get('username')
     password = request.data.get('password')
 
-    # Check empty username
+    
     if not username:
         return Response(
             {'error': 'Username is required'},
             status=status.HTTP_400_BAD_REQUEST
         )
 
-    # Check empty password
+    
     if not password:
         return Response(
             {'error': 'Password is required'},
             status=status.HTTP_400_BAD_REQUEST
         )
 
-    # Check existing user
+    
     if User.objects.filter(username=username).exists():
         return Response(
             {'error': 'User already exists'},
             status=status.HTTP_400_BAD_REQUEST
         )
 
-    # Create user
+   
     User.objects.create_user(
         username=username,
         password=password
